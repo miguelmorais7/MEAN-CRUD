@@ -3,3 +3,11 @@ GET http://localhost:5000/api/employees
 
 ###
 POST http://localhost:5000/api/employees
+Content-Type: application/json
+
+{
+    "name": "test",
+    "position": "Dev",
+    "office": "SP",
+    "salary": "1000"
+}

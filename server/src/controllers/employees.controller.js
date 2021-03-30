@@ -1,16 +1,21 @@
 //const hello = (req,res) => res.send('hello');
 const employeeController = {}
 
-employeeController.getEmployees = (req,res) => {
-    res.send('get employees');
+const Employee = require('../models/Employee');
+
+employeeController.getEmployees = async (req,res) => {
+    const employees = await Employee.find()
+    res.json(employees)
 }
 
 employeeController.getEmployee = (req,res) => {
     res.send('get employee');
 }
 
-employeeController.createEmployee = (req,res) => {
-    res.send('create employee');
+employeeController.createEmployee = async (req,res) => {
+    const newEmployee = new Employee(req.body);
+    await newEmployee.save()
+    res.send({ message: "Employee created" });
 }
 
 employeeController.updateEmployee = (req,res) => {
